@@ -9,7 +9,8 @@ import threading
 
 info_List = []
 m_dict = {'NAME': '', 'IP': '', 'INFO': ''}
-hostname = os.system('hostname')
+hostname = subprocess.check_output(['hostname'])
+hostname = hostname.decode('utf-8')
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
