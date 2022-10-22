@@ -11,6 +11,10 @@ info_List = []
 m_dict = {'NAME': '', 'IP': '', 'INFO': ''}
 hostname = os.system('hostname')
 
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+e = s.getsockname()[0]
+
 # 파일다운로드
 try:
     # --- Intro Setting
@@ -199,15 +203,14 @@ def Socket_Create():
 
     global Client_Socket
 
-    s = Client_Socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    Client_Socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     Client_Socket.connect((Host, Port))
-    e = s.getsockname()[0]
 
-    receive_thread = threading.Thread(target=info_send, arg=(e))
+    receive_thread = threading.Thread(target=info_send)
     receive_thread.start()
 
 
-def info_send(e):
+def info_send():
     print('info_send start')
     m_dict['NAME'] = hostname
     m_dict['IP'] = e
