@@ -203,7 +203,7 @@ def Socket_Create():
     Client_Socket.connect((Host, Port))
     e = s.getsockname()[0]
 
-    receive_thread = threading.Thread(target=info_send, arg=e)
+    receive_thread = threading.Thread(target=info_send, arg=(e))
     receive_thread.start()
 
 
