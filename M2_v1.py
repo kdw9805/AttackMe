@@ -180,7 +180,7 @@ f.close()
 print(list)
 
 #-- 연결된 도메인(리스트 길이 만큼)에 psexec 실행 > 측면이동할 때는 밑에 텍스 파일 끝이 1000인 텍스트 파일 열고 DC로 이동할 때는 그대로 500인 텍스트 파일 열기
-f=open('C:\module2\GetCredential\Credential_use_1000.txt','r', encoding='UTF-8')
+f=open('C:\module2\GetCredential\Credential_use_500.txt','r', encoding='UTF-8')
 line = f.readlines()
 for i in range(len(list)-1):
     lines = line[0].split(".")
