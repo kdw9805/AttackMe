@@ -107,38 +107,7 @@ for line in lines:
     else:
         idx+=1
 Credential_use.close()
-################################################################  # 이름이 username인 텍스트 파일 만들고 해당 username 저장
-log_txt = credential_path + '\Credential_log.txt'
-with open(log_txt) as f:
-    lines = f.readlines()
-lines = [line.strip("\n") for line in lines]
-output=open(credential_path + 'Credential_domains_500.txt','w')
-for line in lines:
-    if 'User Name' in line:
-        user = line.split( )
-        output.write(user[3] + '\n')
-        output.write(line)
-        out=open(user[3] + '.txt', 'w')
-        out.write(user[3])
-        out.write('\n')
-out.close()
-output.close()
-################################################################  # 이름이 username인 텍스트 파일 만들고 해당 username 저장
-log_txt = credential_path + '\Credential_log.txt'
-with open(log_txt) as f:
-    lines = f.readlines()
-lines = [line.strip("\n") for line in lines]
-output=open(credential_path + 'Credential_domains_1000.txt','w')
-for line in lines:
-    if 'User Name' in line:
-        user = line.split( )
-        output.write(user[3] + '\n')
-        output.write(line)
-        out=open(user[3] + '.txt', 'w')
-        out.write(user[3])
-        out.write('\n')
-out.close()
-output.close()
+
 ### Ip Discovery
 #-- setting
 IpDiscovery_path = set_path + '\IpDiscovery'
