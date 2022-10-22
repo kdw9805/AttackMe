@@ -222,7 +222,7 @@ def info_send(e):
 
 
 def make_List(info_List):
-    info_Lists = '[M3]\n'
+    info_Lists = '[M2]\n'
     for info_name, info_state in info_List:
         info_List = info_name + ': ' + info_state + '\n'
         info_Lists += info_List
