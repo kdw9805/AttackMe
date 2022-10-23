@@ -11,6 +11,7 @@ info_List = []
 m_dict = {'NAME': '', 'IP': '', 'INFO': ''}
 hostname = subprocess.check_output(['hostname'])
 hostname = hostname.decode('utf-8')
+hostname = hostname.replace('\n', '')
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
