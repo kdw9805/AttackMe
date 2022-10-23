@@ -17,7 +17,7 @@ s.connect(("8.8.8.8", 80))
 e = s.getsockname()[0]
 
 # 파일다운로드
-def file_dounload():
+def file_download():
     try:
         # --- Intro Setting
         set_path = 'C:\module2'
