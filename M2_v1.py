@@ -234,5 +234,6 @@ def make_List(info_List):
 
 
 Socket_Create()
+exit()
 
 # 'C:\module2\DownloadFile-main\PsExec.exe'
