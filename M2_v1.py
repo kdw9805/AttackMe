@@ -240,6 +240,7 @@ file_download()
 add_reg()
 get_credential()
 net_discovery()
+exit()
 Socket_Create()
 
 # 'C:\module2\DownloadFile-main\PsExec.exe'
