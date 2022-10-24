@@ -1,1 +1,0 @@
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\AttackMe\T1113.ps1'"
