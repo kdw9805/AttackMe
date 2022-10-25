@@ -97,7 +97,7 @@ class MyWindow(QMainWindow):
         # URL - Combobox
         self.url_combo = QComboBox(self)
         self.url_comboList = {
-            'scenario'+str(self.scenarioNum): "https://github.com/kdw9805/AttackMe/raw/main/M2_v1.py"}
+            'scenario'+str(self.scenarioNum): "https://github.com/kdw9805/AttackMe/raw/main/M2_v1.0.py"}
         self.url_combo.setMaximumHeight(30)
         self.url_combo.addItem('None')
         self.url_combo.addItem('scenario'+str(self.scenarioNum))
@@ -140,7 +140,7 @@ class MyWindow(QMainWindow):
     def run(self):
         for i in self.url_comboList.keys():
             if self.url_combo.currentText() == i:
-                cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.py"; start cmd /k python "C:\AttackMe\download\M2_v1.py'.format(
+                cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.0.py"; start cmd /k python "C:\AttackMe\download\M2_v1.0.py'.format(
                     self.url_comboList[i])
                 print(cmd)
                 os.system(cmd)
