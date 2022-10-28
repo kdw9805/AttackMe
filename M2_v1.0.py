@@ -238,7 +238,8 @@ def Lateral_Movement():
         f1.close()
         print('3-3')
         info_List.append(('Lateral Movement', 'Ok'))
-    except:
+    except as e:
+        print(f'error:{e}')
         info_List.append(('Lateral Movement', 'No'))
 
 
