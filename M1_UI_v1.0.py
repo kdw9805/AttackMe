@@ -115,7 +115,6 @@ class MyWindow(QMainWindow):
 
 # 2. 이벤트 함수
     # 시나리오 이벤트
-
     def scenarioEvent(self):
         self.addurl = QLineEdit(self.dialog)
         self.addurl.move(20, 15)
